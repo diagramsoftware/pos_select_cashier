@@ -11,6 +11,7 @@
             		<group string="Select Cashier" col="1">
             			<group col="4">
                             <field name="required_password" />
+                            <field name="cashier_after_order" />
                         </group>
                     </group>
             	</xpath>
