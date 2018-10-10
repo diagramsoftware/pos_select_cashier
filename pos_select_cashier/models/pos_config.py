@@ -28,3 +28,4 @@ class pos_config(models.Model):
     _inherit = 'pos.config'
 
     required_password = fields.Boolean('Password Required', default=False, help="Required password when change cashier on POS screen")
+    cashier_after_order = fields.Boolean('Cashier after order', default=False, help="Select cashier when finish order")
