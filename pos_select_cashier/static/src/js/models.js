@@ -34,15 +34,4 @@ function openerp_pos_select_cashier_models(instance, module){ //module = openerp
             return base_posmodel_model;
         })(),
     });
-    var ReceiptScreenWidgetSuper = module.ReceiptScreenWidget;
-    module.ReceiptScreenWidget = module.ReceiptScreenWidget.extend({
-
-        finishOrder: function() {
-            this._super();
-            var self = this;
-            if (this.pos.config.cashier_after_order){
-                this.pos.pos_widget.screen_selector.set_current_screen('selectcashier');
-            }
-        },
-    });
 }
