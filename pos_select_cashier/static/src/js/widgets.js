@@ -58,4 +58,26 @@ function openerp_pos_select_cashier_widgets(instance, module){ //module = opener
         	}
         }
 	});
+
+    module.ReceiptScreenWidget = module.ReceiptScreenWidget.extend({
+
+        finishOrder: function() {
+            this._super();
+            var self = this;
+            if (this.pos.config.cashier_after_order){
+                this.pos.pos_widget.screen_selector.set_current_screen('selectcashier');
+            }
+        },
+    });
+
+    module.PaymentScreenWidget = module.PaymentScreenWidget.extend({
+        validate_order: function(options) {
+            this._super();
+            var self = this;
+            options = options || {};
+            if (this.pos.config.cashier_after_order && (options.invoice || this.pos.config.iface_print_via_proxy)){
+                this.pos.pos_widget.screen_selector.set_current_screen('selectcashier');
+            }
+        },
+    });
 }
